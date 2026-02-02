@@ -6,7 +6,7 @@ Scripts to interact with AI models via the OpenAI API.
 
 Configure the OpenAI API by setting the following environment variables in your shell profile (e.g., `~/.bashrc`, `~/.zshrc`):
 
-```
+```shell
 # OpenAI API Configuration
 OPENAI_BASE_URL="https://web-tech.tw/recv/openai/v1"
 OPENAI_API_KEY="nymph zr3Pjc68z4bOtw=="
