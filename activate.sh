@@ -12,5 +12,6 @@ BASE_PATH="$(dirname "$0")"
 . "$BASE_PATH/ai_invoke.sh"
 
 # Source additional packages as needed
-. "$BASE_PATH/packages/devops.sh"
 . "$BASE_PATH/packages/git.sh"
+. "$BASE_PATH/packages/ops.sh"
+. "$BASE_PATH/packages/prog.sh"
