@@ -1,3 +1,7 @@
+#!/bin/sh
+# AI Invoke Scripts - Programming Utilities
+# SPDX-License-Identifier: MIT (https://ncurl.xyz/s/Kkn2DQsNR)
+
 # Explain the purpose and logic of a code snippet (supports file path or stdin).
 AI_PROG_EXPLAIN() {
     local CONTENT=""

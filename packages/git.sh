@@ -1,5 +1,5 @@
 #!/bin/sh
-# AI Invoke Scripts - Git
+# AI Invoke Scripts - Git Utilities
 # SPDX-License-Identifier: MIT (https://ncurl.xyz/s/Kkn2DQsNR)
 
 # Automatically generate a standardized Commitizen-style commit message based on staged changes.

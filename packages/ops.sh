@@ -1,5 +1,5 @@
 #!/bin/sh
-# AI Invoke Scripts - DevOps
+# AI Invoke Scripts - DevOps Utilities
 # SPDX-License-Identifier: MIT (https://ncurl.xyz/s/Kkn2DQsNR)
 
 # Generate a safe Linux shell command based on a natural language query.
