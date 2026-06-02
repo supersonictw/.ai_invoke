@@ -39,7 +39,7 @@ AI_OPS_DOCKER() {
 # Analyze error logs from a file or stdin to identify root causes and suggest fixes.
 AI_OPS_LOGANA() {
     local LOG_CONTENT=""
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     if [ -f "$1" ]; then
         LOG_CONTENT="$(cat "$1" | head -c $TRUNCATE_LENGTH)"
     else
@@ -51,7 +51,7 @@ AI_OPS_LOGANA() {
 
 # Convert unstructured text data into JSON format.
 AI_OPS_TOJSON() {
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local DATA="$(cat /dev/stdin | head -c $TRUNCATE_LENGTH)"
     local PROMPT="Convert the following unstructured text into valid JSON format. Infer keys intelligently. Output ONLY the JSON. Text: <text>$DATA</text>"
     AI_INVOKE "$PROMPT"

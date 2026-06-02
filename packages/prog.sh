@@ -10,7 +10,7 @@ AI_PROG_EXPLAIN() {
     else
         CONTENT="$(cat /dev/stdin)"
     fi
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local TRUNCATED_CONTENT="${CONTENT:0:$TRUNCATE_LENGTH}"
     local PROMPT="Explain the following code snippet concisely. Describe its purpose and key logic. Answer in $OPENAI_LOCALE. Code: <code_snippet>$TRUNCATED_CONTENT</code_snippet>"
     AI_INVOKE "$PROMPT"
@@ -24,7 +24,7 @@ AI_PROG_REFACTOR() {
     else
         CONTENT="$(cat /dev/stdin)"
     fi
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local TRUNCATED_CONTENT="${CONTENT:0:$TRUNCATE_LENGTH}"
     local PROMPT="Refactor the following code to improve readability, performance, and maintainability. Explain the changes in $OPENAI_LOCALE. Code: <code_snippet>$TRUNCATED_CONTENT</code_snippet>"
     AI_INVOKE "$PROMPT"
@@ -33,7 +33,7 @@ AI_PROG_REFACTOR() {
 # Generate unit tests for the provided code using a specific framework (e.g., Jest, Pytest).
 AI_PROG_TEST() {
     local FRAMEWORK="${1:-generic}"
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local CONTENT="$(cat /dev/stdin | head -c $TRUNCATE_LENGTH)"
     local PROMPT="Write unit tests for the following code using $FRAMEWORK. Provide high code coverage. Code: <code_snippet>$CONTENT</code_snippet>"
     AI_INVOKE "$PROMPT"
@@ -49,7 +49,7 @@ AI_PROG_NAMING() {
 # Analyze error logs to identify the root cause and suggest a fix.
 AI_PROG_DEBUG() {
     local LOGS=""
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     if [ -f "$1" ]; then
         LOGS="$(cat "$1" | head -c $TRUNCATE_LENGTH)"
     else
@@ -74,7 +74,7 @@ AI_PROG_SEC() {
     else
         CONTENT="$(cat /dev/stdin)"
     fi
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local TRUNCATED_CONTENT="${CONTENT:0:$TRUNCATE_LENGTH}"
     local PROMPT="Review this code snippet specifically for security vulnerabilities (e.g., hardcoded API keys, injection, XSS). Answer in $OPENAI_LOCALE. Code: <code_snippet>$TRUNCATED_CONTENT</code_snippet>"
     AI_INVOKE "$PROMPT"

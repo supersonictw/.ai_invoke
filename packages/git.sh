@@ -4,7 +4,7 @@
 
 # Automatically generate a standardized Commitizen-style commit message based on staged changes.
 AI_GIT_CZMSG() {
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local DIFF_RESULT="$(git diff --staged | head -c $TRUNCATE_LENGTH)"
     local PROMPT="Generate a Commitizen style commit message (e.g., feat: ..., fix: ...) of no more than 20 words based on the changes. Output ONLY the message in $OPENAI_LOCALE. Changes: <diff>$DIFF_RESULT</diff>"
     AI_INVOKE "$PROMPT"
@@ -12,7 +12,7 @@ AI_GIT_CZMSG() {
 
 # Perform a quick AI code review on staged files before committing, focusing on bugs and security risks.
 AI_GIT_REVIEW() {
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local DIFF_RESULT="$(git diff --staged | head -c $TRUNCATE_LENGTH)"
     local PROMPT="Act as a senior engineer. Perform a concise code review on the following git diff. Identify potential bugs, security risks, or logic flaws, and provide improvement suggestions. Answer in $OPENAI_LOCALE. Diff: <diff>$DIFF_RESULT</diff>"
     AI_INVOKE "$PROMPT"
@@ -29,7 +29,7 @@ AI_GIT_RELNOTE() {
 # Suggest suitable git branch names (kebab-case) based on staged content or a provided description.
 AI_GIT_BRNAME() {
     local INPUT_DATA=""
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     if [ -n "$1" ]; then
         INPUT_DATA="Task description: $1"
     else
@@ -41,7 +41,7 @@ AI_GIT_BRNAME() {
 
 # Explain the logic and purpose of the staged changes (useful when you forget what you wrote).
 AI_GIT_EXPLAIN() {
-    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-4000}"
+    local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local DIFF_RESULT="$(git diff --staged | head -c $TRUNCATE_LENGTH)"
     local PROMPT="Explain the logic and purpose of the following staged changes as if explaining to a colleague. Answer in $OPENAI_LOCALE. Changes: <diff>$DIFF_RESULT</diff>"
     AI_INVOKE "$PROMPT"
