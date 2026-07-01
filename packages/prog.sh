@@ -4,7 +4,7 @@
 
 # Explain the purpose and logic of a code snippet (supports file path or stdin).
 AI_PROG_EXPLAIN() {
-    local PREFIX_PROMPT="${PREFIX_PROMPT:}"
+    local PREFIX_PROMPT="${PREFIX_PROMPT:-}"
     local CONTENT=""
     if [ -f "$1" ]; then
         CONTENT="$(cat "$1")"
@@ -19,7 +19,7 @@ AI_PROG_EXPLAIN() {
 
 # Suggest refactoring improvements for code readability, performance, and maintainability.
 AI_PROG_REFACTOR() {
-    local PREFIX_PROMPT="${PREFIX_PROMPT:}"
+    local PREFIX_PROMPT="${PREFIX_PROMPT:-}"
     local CONTENT=""
     if [ -f "$1" ]; then
         CONTENT="$(cat "$1")"
@@ -34,7 +34,7 @@ AI_PROG_REFACTOR() {
 
 # Generate unit tests for the provided code using a specific framework (e.g., Jest, Pytest).
 AI_PROG_TEST() {
-    local PREFIX_PROMPT="${PREFIX_PROMPT:}"
+    local PREFIX_PROMPT="${PREFIX_PROMPT:-}"
     local FRAMEWORK="${1:-generic}"
     local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     local CONTENT="$(cat /dev/stdin | head -c $TRUNCATE_LENGTH)"
@@ -44,7 +44,7 @@ AI_PROG_TEST() {
 
 # Suggest variable or function names based on logic or description.
 AI_PROG_NAMING() {
-    local PREFIX_PROMPT="${PREFIX_PROMPT:}"
+    local PREFIX_PROMPT="${PREFIX_PROMPT:-}"
     local CONTEXT="$1"
     local PROMPT="Suggest 5 variable/function names for the following context/logic. Follow standard naming conventions (camelCase, snake_case etc appropriate for the context). Context: <context>$CONTEXT</context>"
     AI_INVOKE "${PREFIX_PROMPT}${PROMPT}"
@@ -52,7 +52,7 @@ AI_PROG_NAMING() {
 
 # Analyze error logs to identify the root cause and suggest a fix.
 AI_PROG_DEBUG() {
-    local PREFIX_PROMPT="${PREFIX_PROMPT:}"
+    local PREFIX_PROMPT="${PREFIX_PROMPT:-}"
     local LOGS=""
     local TRUNCATE_LENGTH="${TRUNCATE_LENGTH:-5000}"
     if [ -f "$1" ]; then
@@ -66,7 +66,7 @@ AI_PROG_DEBUG() {
 
 # Generate a single, safe shell command based on a natural language request.
 AI_PROG_CMD() {
-    local PREFIX_PROMPT="${PREFIX_PROMPT:}"
+    local PREFIX_PROMPT="${PREFIX_PROMPT:-}"
     local QUERY="$1"
     local PROMPT="Provide a single, safe Linux shell command to achieve the following: '$QUERY'. Wrap the command in a code block. Do not explain unless necessary. Requirement: <requirement>$QUERY</requirement>"
     AI_INVOKE "${PREFIX_PROMPT}${PROMPT}"
@@ -74,7 +74,7 @@ AI_PROG_CMD() {
 
 # Review code specifically for security vulnerabilities (e.g., injection, secrets).
 AI_PROG_SEC() {
-    local PREFIX_PROMPT="${PREFIX_PROMPT:}"
+    local PREFIX_PROMPT="${PREFIX_PROMPT:-}"
     local CONTENT=""
     if [ -f "$1" ]; then
         CONTENT="$(cat "$1")"
