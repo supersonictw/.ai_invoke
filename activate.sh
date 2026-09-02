@@ -6,7 +6,8 @@
 # sets up necessary environment variables and sources required scripts
 
 # Determine the base path of the script
-BASE_PATH="$(dirname "$0")"
+_BASE_PATH="$(dirname -- "${BASH_SOURCE:-$0}")"
+BASE_PATH="${BASE_PATH:-$_BASE_PATH}"
 
 # Source the core AI invoke script
 . "$BASE_PATH/ai_invoke.sh"
